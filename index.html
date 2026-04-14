@@ -1,193 +1,239 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Verum Lux Labs</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verum Lux Labs</title>
+    <style>
+        :root {
+            --bg: #0a0a0a;
+            --card: #111111;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<style>
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-  background: radial-gradient(circle at top, #0f0f12 0%, #050505 100%);
-  color: #ffffff;
-}
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-/* CONTAINER */
-.container {
-  max-width: 1100px;
-  margin: auto;
-  padding: 100px 20px;
-}
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
-/* HERO */
-.hero {
-  margin-bottom: 100px;
-}
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 140px 0 100px;
+            text-align: center;
+            background: radial-gradient(circle at center, #1a1a1a 0%, #0a0a0a 70%);
+        }
 
-.hero h1 {
-  font-size: 56px;
-  letter-spacing: -1px;
-  margin-bottom: 15px;
-}
+        .hero h1 {
+            font-size: 4.2rem;
+            font-weight: 700;
+            letter-spacing: -2px;
+            margin-bottom: 16px;
+        }
 
-.hero p {
-  color: #9a9a9a;
-  font-size: 18px;
-  max-width: 500px;
-  margin-bottom: 40px;
-}
+        .hero p {
+            font-size: 1.35rem;
+            color: #aaaaaa;
+            max-width: 620px;
+            margin: 0 auto 40px;
+        }
 
-/* BUTTONS */
-.buttons a {
-  display: inline-block;
-  margin-right: 15px;
-  padding: 12px 22px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-size: 14px;
-  border: 1px solid #2a2a2a;
-  color: #ffffff;
-  background: #0a0a0a;
-  transition: 0.2s;
-}
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
 
-.buttons a:hover {
-  border-color: #ffffff;
-}
+        .btn {
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-size: 1.05rem;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
 
-/* SECTION */
-.section {
-  margin-top: 80px;
-}
+        .btn-primary {
+            background: #ffffff;
+            color: #000000;
+        }
 
-.section h2 {
-  font-size: 14px;
-  letter-spacing: 2px;
-  color: #777;
-  margin-bottom: 30px;
-  text-transform: uppercase;
-}
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            background: #e0e0e0;
+        }
 
-/* GRID */
-.grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 30px;
-}
+        .btn-secondary {
+            background: transparent;
+            color: #ffffff;
+            border: 1px solid #444;
+        }
 
-/* CARD */
-.card {
-  background: #0a0a0a;
-  padding: 30px;
-  border-radius: 12px;
-  border: 1px solid #111;
-  transition: 0.25s;
-}
+        .btn-secondary:hover {
+            border-color: #777;
+        }
 
-.card:hover {
-  border-color: #2a2a2a;
-  transform: translateY(-3px);
-}
+        /* SECTION */
+        .section {
+            padding: 100px 0;
+        }
 
-/* LOGO */
-.card img {
-  height: 40px;
-  margin-bottom: 15px;
-}
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
 
-/* TEXT */
-.card p {
-  color: #8a8a8a;
-  margin: 0;
-  font-size: 14px;
-}
+        .section-header h2 {
+            font-size: 2.2rem;
+            margin-bottom: 12px;
+        }
 
-/* STATUS */
-.status p {
-  color: #8a8a8a;
-}
+        .section-header p {
+            color: #888;
+            font-size: 1.1rem;
+        }
 
-/* CONTACT */
-.contact a {
-  color: #ffffff;
-  text-decoration: none;
-  border-bottom: 1px solid #333;
-}
+        /* PROJECTS GRID */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 28px;
+        }
 
-/* FOOTER */
-.footer {
-  margin-top: 120px;
-  font-size: 12px;
-  color: #555;
-}
+        .project-card {
+            background: var(--card);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid #1f1f1f;
+            transition: all 0.3s ease;
+        }
 
-/* DESKTOP */
-@media (min-width: 768px) {
-  .grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-</style>
+        .project-card:hover {
+            transform: translateY(-8px);
+            border-color: #444;
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: contain;
+            padding: 30px 20px 10px;
+            background: #0a0a0a;
+        }
+
+        .card-content {
+            padding: 24px;
+        }
+
+        .card-content h3 {
+            font-size: 1.45rem;
+            margin-bottom: 12px;
+        }
+
+        .card-content p {
+            color: #aaaaaa;
+            font-size: 0.98rem;
+            line-height: 1.55;
+        }
+
+        /* STATUS & FOOTER */
+        .status {
+            text-align: center;
+            padding: 80px 0;
+            background: #0f0f0f;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 60px 0 40px;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3.2rem; }
+            .hero p { font-size: 1.2rem; }
+        }
+    </style>
 </head>
-
 <body>
 
-<div class="container">
-
-<!-- HERO -->
-<div class="hero">
-  <h1>Verum Lux Labs</h1>
-  <p>Building digital platforms for music, culture, and discovery.</p>
-
-  <div class="buttons">
-    <a href="#">TuneWalk</a>
-    <a href="#">BeatsPortal</a>
-  </div>
-</div>
-
-<!-- PRODUCTS -->
-<div class="section">
-  <h2>Products</h2>
-
-  <div class="grid">
-
-    <div class="card">
-      <img src="tunewalk.png">
-      <p>Mobile audio guide for music heritage in cities.</p>
+    <!-- HERO -->
+    <div class="hero">
+        <div class="container">
+            <h1>Verum Lux Labs</h1>
+            <p>Building lean, intelligent digital platforms at the intersection of music, culture, and technology.</p>
+            <div class="cta-buttons">
+                <a href="#products" class="btn btn-primary">Explore Our Projects</a>
+                <a href="mailto:hello@verumluxlabs.com" class="btn btn-secondary">Get in touch</a>
+            </div>
+        </div>
     </div>
 
-    <div class="card">
-      <img src="beatsportal.png">
-      <p>Platform for Spotify playlist submissions (electronic music).</p>
+    <!-- PROJECTS -->
+    <div class="section" id="products">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Brands</h2>
+                <p>Independent products under Verum Lux Labs</p>
+            </div>
+            
+            <div class="projects-grid">
+                <div class="project-card">
+                    <img src="https://via.placeholder.com/400x180/111111/ffffff?text=TuneWalk" alt="TuneWalk">
+                    <div class="card-content">
+                        <h3>TuneWalk</h3>
+                        <p>Mobile app that lets users explore cities through curated music heritage tours. Starting with London.</p>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <img src="https://via.placeholder.com/400x180/111111/ffffff?text=BeatsPortal" alt="BeatsPortal">
+                    <div class="card-content">
+                        <h3>BeatsPortal</h3>
+                        <p>Clean platform connecting electronic music producers with playlist curators. Fair submissions, no spam.</p>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <img src="https://via.placeholder.com/400x180/111111/ffffff?text=Modulator" alt="Modulator Records">
+                    <div class="card-content">
+                        <h3>Modulator Records</h3>
+                        <p>Independent electronic music record label focused on quality releases and artist development.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div class="card">
-      <img src="modulator.png">
-      <p>Independent electronic music label.</p>
+    <!-- STATUS -->
+    <div class="status">
+        <div class="container">
+            <p><strong>UK-based • Actively building • AI-first approach</strong></p>
+        </div>
     </div>
 
-  </div>
-</div>
-
-<!-- STATUS -->
-<div class="section status">
-  <h2>Status</h2>
-  <p>Actively building and launching products. London-based.</p>
-</div>
-
-<!-- CONTACT -->
-<div class="section contact">
-  <h2>Contact</h2>
-  <p><a href="mailto:hello@verumluxlabs.com">hello@verumluxlabs.com</a></p>
-</div>
-
-<!-- FOOTER -->
-<div class="footer">
-  © Verum Lux Labs
-</div>
-
-</div>
+    <!-- FOOTER -->
+    <div class="footer">
+        © 2026 Verum Lux Labs • <a href="mailto:hello@verumluxlabs.com" style="color:#777; text-decoration:none;">hello@verumluxlabs.com</a>
+    </div>
 
 </body>
 </html>
