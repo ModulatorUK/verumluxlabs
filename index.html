@@ -8,16 +8,22 @@
         :root {
             --bg: #0a0a0a;
             --card: #111111;
+            --border: #1f1f1f;
+            --text-muted: #a0a0a0;
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             background: var(--bg);
             color: #ffffff;
             line-height: 1.6;
@@ -25,19 +31,18 @@
         }
 
         .container {
-            max-width: 1100px;
+            max-width: 1120px;
             margin: 0 auto;
             padding: 0 20px;
         }
 
-        /* HERO */
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
             padding: 140px 0 100px;
             text-align: center;
-            background: radial-gradient(circle at center, #1a1a1a 0%, #0a0a0a 70%);
+            background: radial-gradient(circle at center, #1a1a1a 0%, #0a0a0a 72%);
         }
 
         .hero h1 {
@@ -48,9 +53,9 @@
         }
 
         .hero p {
-            font-size: 1.35rem;
-            color: #aaaaaa;
-            max-width: 620px;
+            font-size: 1.3rem;
+            color: var(--text-muted);
+            max-width: 640px;
             margin: 0 auto 40px;
         }
 
@@ -63,11 +68,11 @@
 
         .btn {
             padding: 14px 32px;
-            border-radius: 50px;
-            font-size: 1.05rem;
+            border-radius: 999px;
+            font-size: 1rem;
             text-decoration: none;
             font-weight: 500;
-            transition: all 0.3s ease;
+            transition: all 0.25s ease;
         }
 
         .btn-primary {
@@ -77,20 +82,19 @@
 
         .btn-primary:hover {
             transform: translateY(-3px);
-            background: #e0e0e0;
+            background: #e7e7e7;
         }
 
         .btn-secondary {
             background: transparent;
             color: #ffffff;
-            border: 1px solid #444;
+            border: 1px solid #3a3a3a;
         }
 
         .btn-secondary:hover {
-            border-color: #777;
+            border-color: #7a7a7a;
         }
 
-        /* SECTION */
         .section {
             padding: 100px 0;
         }
@@ -106,11 +110,10 @@
         }
 
         .section-header p {
-            color: #888;
-            font-size: 1.1rem;
+            color: #888888;
+            font-size: 1.05rem;
         }
 
-        /* PROJECTS GRID */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -121,13 +124,13 @@
             background: var(--card);
             border-radius: 16px;
             overflow: hidden;
-            border: 1px solid #1f1f1f;
+            border: 1px solid var(--border);
             transition: all 0.3s ease;
         }
 
         .project-card:hover {
             transform: translateY(-8px);
-            border-color: #444;
+            border-color: #444444;
         }
 
         .project-card img {
@@ -135,7 +138,8 @@
             height: 180px;
             object-fit: contain;
             padding: 30px 20px 10px;
-            background: #0a0a0a;
+            background: #0d0d0d;
+            display: block;
         }
 
         .card-content {
@@ -143,96 +147,126 @@
         }
 
         .card-content h3 {
-            font-size: 1.45rem;
+            font-size: 1.4rem;
             margin-bottom: 12px;
         }
 
         .card-content p {
-            color: #aaaaaa;
+            color: var(--text-muted);
             font-size: 0.98rem;
             line-height: 1.55;
         }
 
-        /* STATUS & FOOTER */
         .status {
             text-align: center;
             padding: 80px 0;
             background: #0f0f0f;
+            border-top: 1px solid #151515;
+            border-bottom: 1px solid #151515;
+        }
+
+        .status p {
+            color: #cfcfcf;
+            font-size: 1rem;
         }
 
         .footer {
             text-align: center;
             padding: 60px 0 40px;
             font-size: 0.9rem;
-            color: #555;
+            color: #555555;
+        }
+
+        .footer a {
+            color: #777777;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: #ffffff;
         }
 
         @media (max-width: 768px) {
-            .hero h1 { font-size: 3.2rem; }
-            .hero p { font-size: 1.2rem; }
+            .hero {
+                padding: 120px 0 80px;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+                letter-spacing: -1px;
+            }
+
+            .hero p {
+                font-size: 1.12rem;
+            }
+
+            .section {
+                padding: 80px 0;
+            }
+
+            .section-header h2 {
+                font-size: 1.8rem;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- HERO -->
     <div class="hero">
         <div class="container">
             <h1>Verum Lux Labs</h1>
-            <p>Building lean, intelligent digital platforms at the intersection of music, culture, and technology.</p>
+            <p>Building digital products for music, culture, and discovery.</p>
             <div class="cta-buttons">
-                <a href="#products" class="btn btn-primary">Explore Our Projects</a>
+                <a href="#products" class="btn btn-primary">Explore Projects</a>
                 <a href="mailto:hello@verumluxlabs.com" class="btn btn-secondary">Get in touch</a>
             </div>
         </div>
     </div>
 
-    <!-- PROJECTS -->
     <div class="section" id="products">
         <div class="container">
             <div class="section-header">
-                <h2>Our Brands</h2>
+                <h2>Current Projects</h2>
                 <p>Independent products under Verum Lux Labs</p>
             </div>
-            
+
             <div class="projects-grid">
                 <div class="project-card">
-                    <img src="https://via.placeholder.com/400x180/111111/ffffff?text=TuneWalk" alt="TuneWalk">
+                    <img src="tunewalk.png" alt="TuneWalk logo">
                     <div class="card-content">
                         <h3>TuneWalk</h3>
-                        <p>Mobile app that lets users explore cities through curated music heritage tours. Starting with London.</p>
+                        <p>Mobile app for exploring cities through curated music heritage tours, starting with London.</p>
                     </div>
                 </div>
 
                 <div class="project-card">
-                    <img src="https://via.placeholder.com/400x180/111111/ffffff?text=BeatsPortal" alt="BeatsPortal">
+                    <img src="beatsportal.png" alt="BeatsPortal logo">
                     <div class="card-content">
                         <h3>BeatsPortal</h3>
-                        <p>Clean platform connecting electronic music producers with playlist curators. Fair submissions, no spam.</p>
+                        <p>Playlist submission platform for electronic music producers and curators. Fair submissions, less spam, better discovery.</p>
                     </div>
                 </div>
 
                 <div class="project-card">
-                    <img src="https://via.placeholder.com/400x180/111111/ffffff?text=Modulator" alt="Modulator Records">
+                    <img src="modulator.png" alt="Modulator Records logo">
                     <div class="card-content">
                         <h3>Modulator Records</h3>
-                        <p>Independent electronic music record label focused on quality releases and artist development.</p>
+                        <p>Independent electronic music label focused on quality releases, artists, and long-term identity.</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- STATUS -->
     <div class="status">
         <div class="container">
-            <p><strong>UK-based • Actively building • AI-first approach</strong></p>
+            <p><strong>UK-based • Actively building • Independent product lab</strong></p>
         </div>
     </div>
 
-    <!-- FOOTER -->
     <div class="footer">
-        © 2026 Verum Lux Labs • <a href="mailto:hello@verumluxlabs.com" style="color:#777; text-decoration:none;">hello@verumluxlabs.com</a>
+        © 2026 Verum Lux Labs •
+        <a href="mailto:hello@verumluxlabs.com">hello@verumluxlabs.com</a>
     </div>
 
 </body>
