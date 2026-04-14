@@ -6,7 +6,7 @@
 <title>Verum Lux Labs</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
 :root {
@@ -26,7 +26,7 @@
 html { scroll-behavior: smooth; }
 
 body {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-weight: 300;
   background: var(--bg);
   color: var(--text);
@@ -89,18 +89,18 @@ body::before {
 }
 
 .hero h1 {
-  font-family: 'DM Serif Display', serif;
-  font-size: clamp(3.2rem, 7vw, 5.8rem);
-  font-weight: 400;
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(3rem, 6.5vw, 5.4rem);
+  font-weight: 700;
   line-height: 1.0;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
   margin-bottom: 28px;
   opacity: 0;
   animation: fade-up 0.9s 0.2s ease forwards;
 }
 
 .hero h1 em {
-  font-style: italic;
+  font-style: normal;
   color: var(--accent);
 }
 
@@ -129,7 +129,7 @@ body::before {
   gap: 8px;
   padding: 13px 26px;
   border-radius: 6px;
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
   text-decoration: none;
@@ -213,40 +213,19 @@ body::before {
 }
 
 .card-logo {
-  width: 48px;
-  height: 48px;
-  margin-bottom: 32px;
+  width: 52px;
+  height: 52px;
+  margin-bottom: 28px;
   object-fit: contain;
-  filter: brightness(0.9);
-}
-
-.card-logo-placeholder {
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
-  background: var(--accent-dim);
-  border: 1px solid rgba(201,185,154,0.2);
-  margin-bottom: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.card-logo-placeholder span {
-  font-size: 0.65rem;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  color: var(--accent);
-  text-transform: uppercase;
 }
 
 .card-title {
-  font-family: 'DM Serif Display', serif;
-  font-size: 1.45rem;
-  font-weight: 400;
-  letter-spacing: -0.01em;
+  font-family: 'Syne', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
   margin-bottom: 10px;
-  line-height: 1.1;
+  line-height: 1.15;
 }
 
 .card-desc {
@@ -329,10 +308,10 @@ body::before {
 }
 
 .contact-email {
-  font-family: 'DM Serif Display', serif;
-  font-size: clamp(1.8rem, 4vw, 3.2rem);
-  font-weight: 400;
-  letter-spacing: -0.02em;
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(1.6rem, 3.5vw, 2.8rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
   text-decoration: none;
   color: var(--text);
   position: relative;
@@ -409,7 +388,7 @@ body::before {
 <section class="hero" id="top">
   <div class="wrap">
     <p class="hero-eyebrow">Verum Lux Labs</p>
-    <h1>Products for music,<br><em>culture</em> &amp; discovery.</h1>
+    <h1>Products for music,<br>culture &amp; discovery.</h1>
     <p class="hero-sub">An independent lab building digital tools at the intersection of music, place, and culture.</p>
     <div class="hero-cta">
       <a href="#products" class="btn btn-primary">Explore projects</a>
@@ -429,9 +408,7 @@ body::before {
 
       <!-- TuneWalk — not clickable -->
       <div class="card">
-        <div class="card-logo-placeholder">
-          <span>TW</span>
-        </div>
+        <img src="tunewalk.png" class="card-logo" alt="TuneWalk">
         <h3 class="card-title">TuneWalk</h3>
         <p class="card-desc">Explore cities through curated music heritage tours. Launching with London.</p>
         <div class="card-footer">
@@ -441,9 +418,7 @@ body::before {
 
       <!-- BeatsPortal -->
       <a class="card clickable" href="https://beatsportal.com" target="_blank" rel="noopener">
-        <div class="card-logo-placeholder">
-          <span>BP</span>
-        </div>
+        <img src="beatsportal.png" class="card-logo" alt="BeatsPortal">
         <h3 class="card-title">BeatsPortal</h3>
         <p class="card-desc">Playlist submission platform for electronic music producers and curators.</p>
         <div class="card-footer">
@@ -453,9 +428,7 @@ body::before {
 
       <!-- Modulator Records -->
       <a class="card clickable" href="https://modulatorrecords.com" target="_blank" rel="noopener">
-        <div class="card-logo-placeholder">
-          <span>MR</span>
-        </div>
+        <img src="modulator.png" class="card-logo" alt="Modulator Records">
         <h3 class="card-title">Modulator Records</h3>
         <p class="card-desc">Independent electronic music label focused on quality releases and artists.</p>
         <div class="card-footer">
