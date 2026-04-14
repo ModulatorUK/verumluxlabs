@@ -3,15 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Verum Lux Labs</title>
+<title>Verum Lux Labs — Digital Products for Music & Culture</title>
+<meta name="description" content="Building digital products for music, culture, and discovery. TuneWalk, BeatsPortal, and Modulator Records.">
 
 <style>
 :root {
-  --bg: #0a0a0a;
-  --card: #111111;
-  --border: #232323;
-  --border-light: #3a3a3a;
-  --text-muted: #a0a0a0;
+  --bg: #050505;
+  --card-bg: #0c0c0c;
+  --border: rgba(255,255,255,0.08);
+  --border-hover: rgba(255,255,255,0.15);
+  --text-primary: #ffffff;
+  --text-secondary: #a1a1aa;
+  --text-tertiary: #71717a;
+  --accent: #3b82f6;
+  --accent-glow: rgba(59,130,246,0.2);
+  --gradient-1: linear-gradient(135deg, #1e1e2f 0%, #0a0a0f 100%);
 }
 
 * {
@@ -25,226 +31,404 @@ html {
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, sans-serif;
   background: var(--bg);
-  color: #ffffff;
+  color: var(--text-primary);
+  line-height: 1.5;
 }
 
-/* LAYOUT */
+/* Smooth reveal animations */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .container {
-  max-width: 1120px;
-  margin: auto;
-  padding: 0 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
 }
 
-/* HERO */
+/* HERO SECTION */
 .hero {
-  min-height: 100vh;
+  min-height: 90vh;
   display: flex;
   align-items: center;
+  position: relative;
+  isolation: isolate;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 30%, rgba(59,130,246,0.08) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.hero-content {
+  max-width: 800px;
+  margin: 0 auto;
   text-align: center;
-  background: radial-gradient(circle at center, #1a1a1a 0%, #0a0a0a 72%);
+  animation: fadeUp 0.8s ease-out;
+}
+
+.hero-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  background: rgba(59,130,246,0.15);
+  padding: 6px 14px;
+  border-radius: 100px;
+  color: var(--accent);
+  margin-bottom: 24px;
+  border: 1px solid rgba(59,130,246,0.2);
 }
 
 .hero h1 {
-  font-size: 4rem;
-  letter-spacing: -2px;
-  margin-bottom: 16px;
+  font-size: 4.5rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, #fff, #a1a1aa);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
 }
 
 .hero p {
-  font-size: 1.3rem;
-  color: var(--text-muted);
+  font-size: 1.25rem;
+  color: var(--text-secondary);
   margin-bottom: 40px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* BUTTONS */
-.cta-buttons {
+/* Buttons */
+.button-group {
   display: flex;
   gap: 16px;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .btn {
-  padding: 14px 30px;
-  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  border-radius: 100px;
   text-decoration: none;
-  font-size: 1rem;
-  transition: 0.25s;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: all 0.25s ease;
 }
 
 .btn-primary {
-  background: #fff;
-  color: #000;
+  background: var(--accent);
+  color: white;
+  box-shadow: 0 2px 8px rgba(59,130,246,0.2);
 }
 
 .btn-primary:hover {
-  transform: translateY(-3px);
+  background: #2563eb;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(59,130,246,0.3);
 }
 
 .btn-secondary {
-  border: 1px solid #444;
-  color: #fff;
+  background: rgba(255,255,255,0.05);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(10px);
 }
 
 .btn-secondary:hover {
-  border-color: #777;
+  background: rgba(255,255,255,0.1);
+  border-color: var(--border-hover);
+  transform: translateY(-2px);
 }
 
-/* SECTION */
+/* Section headers */
 .section {
   padding: 100px 0;
 }
 
-.section h2 {
+.section-header {
   text-align: center;
-  margin-bottom: 50px;
-  font-size: 2rem;
+  margin-bottom: 64px;
 }
 
-/* GRID */
+.section-header h2 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+}
+
+.section-header p {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+}
+
+/* Product grid */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 30px;
+  gap: 32px;
 }
 
-/* CARD */
+/* Cards */
 .project-card {
-  display: block;
-  background: linear-gradient(180deg, #121212, #0e0e0e);
-  border-radius: 18px;
+  background: var(--card-bg);
   border: 1px solid var(--border);
+  border-radius: 24px;
   overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
   text-decoration: none;
-  transition: 0.3s;
+  display: block;
   position: relative;
 }
 
-.project-card:hover {
-  transform: translateY(-8px);
-  border-color: var(--border-light);
+.project-card:not(.coming-soon):hover {
+  transform: translateY(-6px);
+  border-color: var(--border-hover);
+  background: #0e0e12;
 }
 
-/* metallic edge */
-.project-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 18px;
-  padding: 1px;
-  background: linear-gradient(135deg, #555, #222, #555);
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  pointer-events: none;
-  opacity: 0.3;
+.coming-soon {
+  cursor: default;
+  opacity: 0.9;
 }
 
-/* IMAGE */
-.project-card img {
-  width: 100%;
-  height: 180px;
+.card-image {
+  aspect-ratio: 16/9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0f0f14 0%, #08080c 100%);
+  padding: 32px;
+}
+
+.card-image img {
+  max-width: 80%;
+  max-height: 100%;
   object-fit: contain;
-  padding: 30px;
+  filter: brightness(0.95);
+  transition: filter 0.3s ease;
 }
 
-/* TEXT */
+.project-card:not(.coming-soon):hover .card-image img {
+  filter: brightness(1);
+}
+
 .card-content {
   padding: 24px;
+  border-top: 1px solid var(--border);
 }
 
 .card-content h3 {
-  margin-bottom: 10px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
 }
 
 .card-content p {
-  color: var(--text-muted);
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.5;
 }
 
-/* COMING SOON BADGE */
 .badge {
   position: absolute;
-  top: 15px;
-  right: 15px;
-  font-size: 0.75rem;
-  padding: 6px 10px;
-  border-radius: 999px;
-  background: rgba(255, 200, 80, 0.12);
-  color: #ffc857;
-  border: 1px solid rgba(255, 200, 80, 0.3);
+  top: 16px;
+  right: 16px;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(8px);
+  padding: 6px 12px;
+  border-radius: 100px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: #fbbf24;
+  border: 1px solid rgba(251,191,36,0.3);
+  letter-spacing: 0.3px;
 }
 
-/* disable hover for coming soon */
-.coming-soon:hover {
-  transform: none;
-  cursor: default;
+/* Status bar */
+.status-bar {
+  background: rgba(255,255,255,0.02);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 24px 0;
 }
 
-/* STATUS */
-.status {
+.status-content {
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.status-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  background: #10b981;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.2); }
+}
+
+/* Contact section */
+.contact-section {
   text-align: center;
-  padding: 80px 0;
-  background: #0f0f0f;
+  background: linear-gradient(180deg, transparent 0%, rgba(59,130,246,0.03) 100%);
 }
 
-/* CONTACT */
-.contact {
-  text-align: center;
+.contact-card {
+  max-width: 600px;
+  margin: 0 auto;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 32px;
+  padding: 48px;
 }
 
-.contact h2 {
-  margin-bottom: 20px;
+.contact-icon {
+  font-size: 2rem;
+  margin-bottom: 24px;
+}
+
+.contact-card h3 {
+  font-size: 1.8rem;
+  margin-bottom: 12px;
 }
 
 .contact-email {
-  font-size: 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.25rem;
   text-decoration: none;
-  color: #fff;
-  border-bottom: 1px solid #444;
+  color: var(--accent);
+  padding: 12px 24px;
+  border-radius: 100px;
+  background: rgba(59,130,246,0.1);
+  transition: all 0.25s ease;
+  margin-top: 24px;
 }
 
-/* FOOTER */
+.contact-email:hover {
+  background: rgba(59,130,246,0.15);
+  gap: 16px;
+}
+
+/* Footer */
 .footer {
   text-align: center;
-  padding: 60px 0;
-  color: #555;
+  padding: 48px 24px;
+  border-top: 1px solid var(--border);
+  color: var(--text-tertiary);
+  font-size: 0.85rem;
 }
 
-/* MOBILE */
+/* Mobile */
 @media (max-width: 768px) {
   .hero h1 {
-    font-size: 2.8rem;
+    font-size: 2.5rem;
+  }
+  
+  .hero p {
+    font-size: 1rem;
+  }
+  
+  .section {
+    padding: 60px 0;
+  }
+  
+  .section-header h2 {
+    font-size: 2rem;
+  }
+  
+  .contact-card {
+    padding: 32px 24px;
+  }
+  
+  .button-group {
+    gap: 12px;
+  }
+  
+  .btn {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 20px;
+  }
+  
+  .projects-grid {
+    gap: 20px;
   }
 }
 </style>
 </head>
-
 <body>
 
-<!-- HERO -->
-<div class="hero">
+<!-- Hero -->
+<section class="hero">
   <div class="container">
-    <h1>Verum Lux Labs</h1>
-    <p>Building digital products for music, culture, and discovery.</p>
-
-    <div class="cta-buttons">
-      <a href="#products" class="btn btn-primary">Explore Projects</a>
-      <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+    <div class="hero-content">
+      <span class="hero-badge">✦ Product Lab</span>
+      <h1>Verum Lux Labs</h1>
+      <p>Building thoughtful digital products for music, culture, and discovery.</p>
+      <div class="button-group">
+        <a href="#products" class="btn btn-primary">View Projects →</a>
+        <a href="#contact" class="btn btn-secondary">Contact →</a>
+      </div>
     </div>
   </div>
-</div>
+</section>
 
-<!-- PROJECTS -->
-<div class="section" id="products">
+<!-- Products Section -->
+<section class="section" id="products">
   <div class="container">
-    <h2>Current Projects</h2>
+    <div class="section-header">
+      <h2>Current Projects</h2>
+      <p>Products we're actively building and shipping</p>
+    </div>
 
     <div class="projects-grid">
-
-      <!-- TuneWalk (NOT clickable) -->
+      <!-- TuneWalk - Coming Soon -->
       <div class="project-card coming-soon">
         <span class="badge">Coming Soon</span>
-        <img src="tunewalk.png">
+        <div class="card-image">
+          <img src="https://placehold.co/400x300/1a1a2e/ffffff?text=🎵" alt="TuneWalk">
+        </div>
         <div class="card-content">
           <h3>TuneWalk</h3>
           <p>Mobile app for exploring cities through curated music heritage tours. Launching with London.</p>
@@ -252,48 +436,68 @@ body {
       </div>
 
       <!-- BeatsPortal -->
-      <a class="project-card" href="https://beatsportal.com" target="_blank">
-        <img src="beatsportal.png">
+      <a class="project-card" href="https://beatsportal.com" target="_blank" rel="noopener noreferrer">
+        <div class="card-image">
+          <img src="https://placehold.co/400x300/1a1a2e/ffffff?text=🎧" alt="BeatsPortal">
+        </div>
         <div class="card-content">
           <h3>BeatsPortal</h3>
           <p>Playlist submission platform for electronic music producers and curators.</p>
         </div>
       </a>
 
-      <!-- Modulator -->
-      <a class="project-card" href="https://modulatorrecords.com" target="_blank">
-        <img src="modulator.png">
+      <!-- Modulator Records -->
+      <a class="project-card" href="https://modulatorrecords.com" target="_blank" rel="noopener noreferrer">
+        <div class="card-image">
+          <img src="https://placehold.co/400x300/1a1a2e/ffffff?text=🏷️" alt="Modulator Records">
+        </div>
         <div class="card-content">
           <h3>Modulator Records</h3>
           <p>Independent electronic music label focused on quality releases and artists.</p>
         </div>
       </a>
+    </div>
+  </div>
+</section>
 
+<!-- Status Bar -->
+<div class="status-bar">
+  <div class="container">
+    <div class="status-content">
+      <div class="status-item">
+        <span class="status-dot"></span>
+        <span>London-based</span>
+      </div>
+      <div class="status-item">
+        <span>⚡</span>
+        <span>Actively building</span>
+      </div>
+      <div class="status-item">
+        <span>🎯</span>
+        <span>Independent lab</span>
+      </div>
     </div>
   </div>
 </div>
 
-<!-- STATUS -->
-<div class="status">
+<!-- Contact Section -->
+<section class="section contact-section" id="contact">
   <div class="container">
-    <p><strong>London-based • Independent product lab • Actively building</strong></p>
+    <div class="contact-card">
+      <div class="contact-icon">📫</div>
+      <h3>Get In Touch</h3>
+      <p style="color: var(--text-secondary); margin-bottom: 8px;">Have a project in mind? Let's talk.</p>
+      <a href="mailto:hello@verumluxlabs.com" class="contact-email">
+        hello@verumluxlabs.com →
+      </a>
+    </div>
   </div>
-</div>
+</section>
 
-<!-- CONTACT -->
-<div class="section contact" id="contact">
-  <div class="container">
-    <h2>Get In Touch</h2>
-    <a class="contact-email" href="mailto:hello@verumluxlabs.com">
-      hello@verumluxlabs.com
-    </a>
-  </div>
-</div>
-
-<!-- FOOTER -->
-<div class="footer">
-  © 2026 Verum Lux Labs
-</div>
+<!-- Footer -->
+<footer class="footer">
+  <p>© 2026 Verum Lux Labs — All rights reserved</p>
+</footer>
 
 </body>
 </html>
