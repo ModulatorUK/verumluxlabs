@@ -11,7 +11,7 @@
 
 <style>
 :root {
-  --bg: #080808;
+  --bg: #12100c; /* warm dark background (no seam) */
   --border: rgba(255,255,255,0.07);
   --border-hover: rgba(255,255,255,0.16);
   --text: #f0ede8;
@@ -23,7 +23,7 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 html, body {
-  background: #080808;
+  background: var(--bg);
   scroll-behavior: smooth;
 }
 
@@ -31,17 +31,6 @@ body {
   font-family: 'Inter', sans-serif;
   color: var(--text);
   -webkit-font-smoothing: antialiased;
-  position: relative;
-}
-
-/* GOLD OVERLAY (fixes visual tone issue) */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: rgba(201,185,154,0.08);
-  pointer-events: none;
-  z-index: 0;
 }
 
 /* LAYOUT */
@@ -49,8 +38,6 @@ body::before {
   max-width: 1080px;
   margin: 0 auto;
   padding: 0 40px;
-  position: relative;
-  z-index: 1;
 }
 
 /* HERO */
@@ -64,7 +51,7 @@ body::before {
 
 .hero-eyebrow {
   font-family: 'Syne', sans-serif;
-  font-size: 1.05rem;
+  font-size: 1rem;
   letter-spacing: 0.06em;
   color: var(--accent);
   margin-bottom: 32px;
@@ -72,17 +59,16 @@ body::before {
 
 .hero h1 {
   font-family: 'Syne', sans-serif;
-  font-size: clamp(3rem, 6.5vw, 5.4rem);
+  font-size: clamp(3rem, 6vw, 5rem);
   font-weight: 700;
-  line-height: 1;
   margin-bottom: 28px;
 }
 
 .hero-sub {
   font-size: 1rem;
   color: var(--muted);
-  max-width: 380px;
-  line-height: 1.65;
+  max-width: 400px;
+  line-height: 1.6;
   margin-bottom: 48px;
 }
 
@@ -103,7 +89,7 @@ body::before {
 
 .btn-primary {
   background: var(--text);
-  color: #080808;
+  color: #12100c;
 }
 
 .btn-primary:hover {
@@ -203,6 +189,7 @@ body::before {
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
   text-align: center;
+  color: var(--muted);
 }
 
 /* CONTACT */
@@ -221,7 +208,7 @@ body::before {
 
 .contact-email {
   font-family: 'Syne', sans-serif;
-  font-size: clamp(1.6rem, 3.5vw, 2.8rem);
+  font-size: clamp(1.6rem, 3.5vw, 2.6rem);
   text-decoration: none;
   color: var(--text);
 }
