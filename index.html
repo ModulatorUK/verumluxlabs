@@ -10,15 +10,16 @@
 
 <style>
 :root {
-  --bg:        #080808;
-  --surface:   #0f0f0f;
-  --surface-2: #141414;
-  --border:    rgba(255,255,255,0.07);
-  --border-hover: rgba(255,255,255,0.14);
-  --text:      #f0ede8;
-  --muted:     rgba(240,237,232,0.45);
-  --accent:    #c9b99a;
-  --accent-dim: rgba(201,185,154,0.12);
+  --bg:           #080808;
+  --border:       rgba(255,255,255,0.07);
+  --border-hover: rgba(255,255,255,0.16);
+  --text:         #f0ede8;
+  --muted:        rgba(240,237,232,0.42);
+  --accent:       #c9b99a;
+  --accent-dim:   rgba(201,185,154,0.1);
+  --metal-1:      rgba(255,255,255,0.18);
+  --metal-2:      rgba(255,255,255,0.04);
+  --metal-3:      rgba(255,255,255,0.13);
 }
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -28,29 +29,17 @@ html { scroll-behavior: smooth; }
 body {
   font-family: 'Inter', sans-serif;
   font-weight: 300;
-  background: var(--bg);
+  background: #080808;
   color: var(--text);
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
 
-/* ─── NOISE OVERLAY ─── */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-  background-size: 200px 200px;
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0.6;
-}
-
-/* ─── CONTAINER ─── */
+/* ─── LAYOUT ─── */
 .wrap {
   max-width: 1080px;
   margin: 0 auto;
-  padding: 0 32px;
+  padding: 0 40px;
   position: relative;
   z-index: 1;
 }
@@ -61,29 +50,17 @@ body::before {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  position: relative;
   padding: 100px 0 80px;
-}
-
-/* radial glow */
-.hero::before {
-  content: '';
-  position: absolute;
-  top: 30%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 700px;
-  height: 500px;
-  background: radial-gradient(ellipse, rgba(201,185,154,0.055) 0%, transparent 70%);
-  pointer-events: none;
+  background: #080808;
 }
 
 .hero-eyebrow {
-  font-size: 0.75rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 28px;
+  font-family: 'Syne', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--text);
+  margin-bottom: 32px;
   opacity: 0;
   animation: fade-up 0.8s 0.1s ease forwards;
 }
@@ -99,54 +76,48 @@ body::before {
   animation: fade-up 0.9s 0.2s ease forwards;
 }
 
-.hero h1 em {
-  font-style: normal;
-  color: var(--accent);
-}
-
 .hero-sub {
-  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-size: 1rem;
   color: var(--muted);
   font-weight: 300;
-  max-width: 420px;
-  line-height: 1.6;
-  margin-bottom: 52px;
+  max-width: 380px;
+  line-height: 1.65;
+  margin-bottom: 48px;
   opacity: 0;
   animation: fade-up 0.9s 0.35s ease forwards;
 }
 
 .hero-cta {
   display: flex;
-  gap: 14px;
+  gap: 12px;
   flex-wrap: wrap;
   opacity: 0;
   animation: fade-up 0.9s 0.5s ease forwards;
 }
 
+/* ─── BUTTONS ─── */
 .btn {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 13px 26px;
+  padding: 12px 24px;
   border-radius: 6px;
   font-family: 'Inter', sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
   text-decoration: none;
   letter-spacing: 0.01em;
-  transition: all 0.22s ease;
+  transition: all 0.2s ease;
   cursor: pointer;
   border: none;
 }
 
 .btn-primary {
   background: var(--text);
-  color: #0a0a0a;
+  color: #080808;
 }
 .btn-primary:hover {
   background: #fff;
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
 }
 
 .btn-ghost {
@@ -160,7 +131,7 @@ body::before {
   transform: translateY(-2px);
 }
 
-/* ─── DIVIDER ─── */
+/* ─── RULE ─── */
 .rule {
   width: 100%;
   height: 1px;
@@ -169,70 +140,101 @@ body::before {
 
 /* ─── SECTION ─── */
 .section {
-  padding: 120px 0;
+  padding: 100px 0;
+  background: #080808;
 }
 
 .section-label {
-  font-size: 0.72rem;
-  letter-spacing: 0.18em;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--accent);
-  margin-bottom: 56px;
+  margin-bottom: 48px;
 }
 
-/* ─── PROJECTS GRID ─── */
+/* ─── GRID ─── */
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  background: var(--border);
-  border: none;
-  border-radius: 0;
-  overflow: hidden;
+  gap: 20px;
 }
 
+/* ─── CARD ─── */
 .card {
-  background: var(--bg);
-  padding: 36px 32px 32px;
+  background: #080808;
+  padding: 32px 28px 28px;
   text-decoration: none;
   color: inherit;
   display: flex;
   flex-direction: column;
-  gap: 0;
   position: relative;
+  border-radius: 12px;
+  min-height: 300px;
   transition: background 0.25s ease;
-  min-height: 280px;
+  isolation: isolate;
+}
+
+/* metallic gradient border */
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  padding: 1px;
+  background: linear-gradient(
+    145deg,
+    rgba(255,255,255,0.22) 0%,
+    rgba(255,255,255,0.05) 35%,
+    rgba(255,255,255,0.10) 65%,
+    rgba(255,255,255,0.20) 100%
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 0;
 }
 
 .card.clickable:hover {
-  background: var(--surface-2);
+  background: #0d0d0d;
 }
+
 .card.clickable:hover .card-arrow {
   opacity: 1;
-  transform: translate(2px, -2px);
+  transform: translate(3px, -3px);
 }
 
+/* ─── LOGO ─── */
 .card-logo {
-  width: 100px;
-  height: 100px;
+  width: 72px;
+  height: 72px;
   margin-bottom: 28px;
   object-fit: contain;
+  position: relative;
+  z-index: 1;
 }
 
+/* ─── CARD TEXT ─── */
 .card-title {
   font-family: 'Syne', sans-serif;
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   font-weight: 600;
   letter-spacing: -0.02em;
   margin-bottom: 10px;
   line-height: 1.15;
+  position: relative;
+  z-index: 1;
 }
 
 .card-desc {
   font-size: 0.875rem;
   color: var(--muted);
-  line-height: 1.6;
+  line-height: 1.65;
   flex: 1;
+  position: relative;
+  z-index: 1;
 }
 
 .card-footer {
@@ -240,15 +242,17 @@ body::before {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
+  z-index: 1;
 }
 
 .badge-soon {
-  font-size: 0.7rem;
-  letter-spacing: 0.1em;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  padding: 4px 10px;
+  padding: 5px 10px;
   border-radius: 4px;
-  border: 1px solid rgba(201,185,154,0.25);
+  border: 1px solid rgba(201,185,154,0.3);
   color: var(--accent);
   background: var(--accent-dim);
 }
@@ -256,20 +260,22 @@ body::before {
 .card-arrow {
   font-size: 1rem;
   color: var(--muted);
-  opacity: 0.5;
+  opacity: 0.45;
   transition: all 0.2s ease;
   display: inline-block;
+  margin-left: auto;
 }
 
 /* ─── STATUS BAR ─── */
 .status-bar {
-  padding: 26px 0;
+  padding: 24px 0;
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
+  background: #080808;
 }
 
 .status-bar p {
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   color: var(--muted);
   letter-spacing: 0.04em;
   text-align: center;
@@ -282,11 +288,11 @@ body::before {
 
 .dot {
   display: inline-block;
-  width: 5px;
-  height: 5px;
+  width: 4px;
+  height: 4px;
   border-radius: 50%;
   background: var(--accent);
-  margin: 0 10px;
+  margin: 0 12px;
   vertical-align: middle;
   position: relative;
   top: -1px;
@@ -296,14 +302,15 @@ body::before {
 .contact {
   padding: 120px 0 100px;
   text-align: center;
+  background: #080808;
 }
 
 .contact-label {
-  font-size: 0.72rem;
-  letter-spacing: 0.18em;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--accent);
-  margin-bottom: 40px;
+  margin-bottom: 36px;
   display: block;
 }
 
@@ -327,24 +334,20 @@ body::before {
   right: 0;
   height: 1px;
   background: var(--accent);
-  transform: scaleX(0.3);
+  transform: scaleX(0.25);
   transform-origin: left;
   transition: transform 0.4s ease;
   opacity: 0.5;
 }
 
-.contact-email:hover {
-  color: var(--accent);
-}
-.contact-email:hover::after {
-  transform: scaleX(1);
-  opacity: 1;
-}
+.contact-email:hover { color: var(--accent); }
+.contact-email:hover::after { transform: scaleX(1); opacity: 1; }
 
 /* ─── FOOTER ─── */
 .footer {
-  padding: 40px 0;
+  padding: 36px 0;
   border-top: 1px solid var(--border);
+  background: #080808;
 }
 
 .footer-inner {
@@ -353,28 +356,19 @@ body::before {
   align-items: center;
 }
 
-.footer-name {
-  font-size: 0.8rem;
-  color: var(--muted);
-}
+.footer-name { font-size: 0.8rem; color: var(--muted); }
+.footer-copy { font-size: 0.8rem; color: rgba(240,237,232,0.18); }
 
-.footer-copy {
-  font-size: 0.8rem;
-  color: rgba(240,237,232,0.2);
-}
-
-/* ─── ANIMATIONS ─── */
+/* ─── ANIMATION ─── */
 @keyframes fade-up {
-  from { opacity: 0; transform: translateY(20px); }
+  from { opacity: 0; transform: translateY(18px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ─── RESPONSIVE ─── */
+/* ─── MOBILE ─── */
 @media (max-width: 780px) {
   .wrap { padding: 0 20px; }
-  .grid {
-    grid-template-columns: 1fr;
-  }
+  .grid { grid-template-columns: 1fr; gap: 16px; }
   .card { min-height: auto; }
   .hero { padding: 80px 0 60px; }
   .section { padding: 80px 0; }
@@ -403,10 +397,9 @@ body::before {
 <section class="section" id="products">
   <div class="wrap">
     <p class="section-label">Current projects</p>
-
     <div class="grid">
 
-      <!-- TuneWalk — not clickable -->
+      <!-- TuneWalk -->
       <div class="card">
         <img src="tunewalk.png" class="card-logo" alt="TuneWalk">
         <h3 class="card-title">TuneWalk</h3>
@@ -440,7 +433,7 @@ body::before {
   </div>
 </section>
 
-<!-- STATUS BAR -->
+<!-- STATUS -->
 <div class="status-bar">
   <div class="wrap">
     <p>
@@ -457,9 +450,7 @@ body::before {
 <section class="contact" id="contact">
   <div class="wrap">
     <span class="contact-label">Get in touch</span>
-    <a class="contact-email" href="mailto:hello@verumluxlabs.com">
-      hello@verumluxlabs.com
-    </a>
+    <a class="contact-email" href="mailto:hello@verumluxlabs.com">hello@verumluxlabs.com</a>
   </div>
 </section>
 
@@ -468,7 +459,7 @@ body::before {
   <div class="wrap">
     <div class="footer-inner">
       <span class="footer-name">Verum Lux Labs</span>
-      <span class="footer-copy">© 2026. All rights reserved.</span>
+      <span class="footer-copy">© 2026</span>
     </div>
   </div>
 </footer>
