@@ -63,12 +63,13 @@ body {
   font-size: clamp(3rem, 6vw, 5rem);
   font-weight: 700;
   margin-bottom: 28px;
+  line-height: 1.02;
 }
 
 .hero-sub {
   font-size: 1rem;
   color: var(--muted);
-  max-width: 400px;
+  max-width: 460px;
   line-height: 1.6;
   margin-bottom: 48px;
 }
@@ -117,6 +118,14 @@ body {
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.section-intro {
+  font-size: 0.95rem;
+  color: var(--muted);
+  max-width: 560px;
+  line-height: 1.65;
   margin-bottom: 48px;
 }
 
@@ -163,6 +172,7 @@ body {
   font-size: 0.875rem;
   color: var(--muted);
   flex: 1;
+  line-height: 1.6;
 }
 
 .card-footer {
@@ -170,6 +180,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 12px;
 }
 
 .badge-soon {
@@ -179,6 +190,7 @@ body {
   border: 1px solid rgba(201,185,154,0.3);
   color: var(--accent);
   background: var(--accent-dim);
+  white-space: nowrap;
 }
 
 .card-arrow {
@@ -188,6 +200,7 @@ body {
   justify-content: center;
   opacity: 0.5;
   transition: all 0.2s ease;
+  margin-left: auto;
 }
 
 .card-arrow svg {
@@ -219,7 +232,14 @@ body {
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--accent);
-  margin-bottom: 36px;
+  margin-bottom: 20px;
+}
+
+.contact-text {
+  font-size: 0.95rem;
+  color: var(--muted);
+  margin-bottom: 24px;
+  line-height: 1.6;
 }
 
 .contact-email {
@@ -241,6 +261,8 @@ body {
 @media (max-width: 780px) {
   .wrap { padding: 0 20px; }
   .grid { grid-template-columns: 1fr; }
+  .hero { padding: 80px 0 60px; }
+  .section { padding: 80px 0; }
 }
 </style>
 </head>
@@ -251,7 +273,7 @@ body {
   <div class="wrap">
     <p class="hero-eyebrow">Verum Lux Labs</p>
     <h1>Products for music,<br>culture & discovery.</h1>
-    <p class="hero-sub">An independent lab building digital products for music, culture, and discovery.</p>
+    <p class="hero-sub">Building tools for how people discover music in the real world.</p>
 
     <div class="hero-cta">
       <a href="#products" class="btn btn-primary">Explore projects</a>
@@ -263,22 +285,30 @@ body {
 <section class="section" id="products">
   <div class="wrap">
     <p class="section-label">Current projects</p>
+    <p class="section-intro">
+      Each product focuses on a different side of music discovery — from physical places and cultural history to digital platforms and artist infrastructure.
+    </p>
 
     <div class="grid">
 
-      <div class="card">
+      <a class="card clickable" href="https://tunewalk.app" target="_blank" rel="noopener">
         <img src="tunewalk.png" class="card-logo" alt="TuneWalk logo">
         <h3 class="card-title">TuneWalk</h3>
         <p class="card-desc">Explore cities through curated music heritage tours. Launching with London.</p>
         <div class="card-footer">
           <span class="badge-soon">Coming soon</span>
+          <span class="card-arrow" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+              <path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
         </div>
-      </div>
+      </a>
 
       <a class="card clickable" href="https://beatsportal.com" target="_blank" rel="noopener">
         <img src="beatsportal.png" class="card-logo" alt="BeatsPortal logo">
         <h3 class="card-title">BeatsPortal</h3>
-        <p class="card-desc">Playlist submission platform for electronic music.</p>
+        <p class="card-desc">A cleaner submission platform for electronic music producers and curators.</p>
         <div class="card-footer">
           <span class="card-arrow" aria-hidden="true">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
@@ -291,7 +321,7 @@ body {
       <a class="card clickable" href="https://modulatorrecords.com" target="_blank" rel="noopener">
         <img src="modulator.png" class="card-logo" alt="Modulator Records logo">
         <h3 class="card-title">Modulator Records</h3>
-        <p class="card-desc">Independent label focused on artists and releases.</p>
+        <p class="card-desc">Independent label focused on artists, releases, and long-term identity.</p>
         <div class="card-footer">
           <span class="card-arrow" aria-hidden="true">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
@@ -312,6 +342,7 @@ body {
 <section class="contact" id="contact">
   <div class="wrap">
     <div class="contact-label">Get in touch</div>
+    <p class="contact-text">Have a project in mind? Let’s talk.</p>
     <a class="contact-email" href="mailto:hello@verumluxlabs.com">
       hello@verumluxlabs.com
     </a>
