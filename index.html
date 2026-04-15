@@ -170,7 +170,6 @@ body::before {
 /* ─── SECTION ─── */
 .section {
   padding: 120px 0;
-  background: var(--bg);  /* ADDED THIS LINE */
 }
 
 .section-label {
@@ -187,8 +186,8 @@ body::before {
   grid-template-columns: repeat(3, 1fr);
   gap: 1px;
   background: var(--border);
-  border: 1px solid var(--border);
-  border-radius: 14px;
+  border: none;
+  border-radius: 0;
   overflow: hidden;
 }
 
@@ -297,7 +296,6 @@ body::before {
 .contact {
   padding: 120px 0 100px;
   text-align: center;
-  background: var(--bg);
 }
 
 .contact-label {
@@ -347,7 +345,6 @@ body::before {
 .footer {
   padding: 40px 0;
   border-top: 1px solid var(--border);
-  background: var(--bg);
 }
 
 .footer-inner {
@@ -394,8 +391,8 @@ body::before {
     <h1>Products for music,<br>culture &amp; discovery.</h1>
     <p class="hero-sub">An independent lab building digital products for music, culture, and discovery.</p>
     <div class="hero-cta">
-      <a href="#products" class="btn btn-primary">Explore Projects</a>
-      <a href="#contact" class="btn btn-ghost">Get in Touch</a>
+      <a href="#products" class="btn btn-primary">Explore projects</a>
+      <a href="#contact" class="btn btn-ghost">Get in touch</a>
     </div>
   </div>
 </section>
@@ -459,7 +456,7 @@ body::before {
 <!-- CONTACT -->
 <section class="contact" id="contact">
   <div class="wrap">
-    <span class="contact-label">Get in Touch</span>
+    <span class="contact-label">Get in touch</span>
     <a class="contact-email" href="mailto:hello@verumluxlabs.com">
       hello@verumluxlabs.com
     </a>
