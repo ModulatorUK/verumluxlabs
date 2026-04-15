@@ -4,54 +4,50 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Verum Lux Labs</title>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  --bg:           #080808;
-  --border:       rgba(255,255,255,0.07);
+  --bg: #080808;
+  --border: rgba(255,255,255,0.07);
   --border-hover: rgba(255,255,255,0.16);
-  --text:         #f0ede8;
-  --muted:        rgba(240,237,232,0.42);
-  --accent:       #c9b99a;
-  --accent-dim:   rgba(201,185,154,0.1);
-  --metal-1:      rgba(255,255,255,0.18);
-  --metal-2:      rgba(255,255,255,0.04);
-  --metal-3:      rgba(255,255,255,0.13);
+  --text: #f0ede8;
+  --muted: rgba(240,237,232,0.42);
+  --accent: #c9b99a;
+  --accent-dim: rgba(201,185,154,0.1);
 }
 
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+html, body {
+  background: #080808;
+  scroll-behavior: smooth;
+}
 
 body {
   font-family: 'Inter', sans-serif;
   font-weight: 300;
-  background: #080808;
   color: var(--text);
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
 }
 
-/* ─── LAYOUT ─── */
+/* LAYOUT */
 .wrap {
   max-width: 1080px;
   margin: 0 auto;
   padding: 0 40px;
-  position: relative;
-  z-index: 1;
 }
 
-/* ─── HERO ─── */
+/* HERO */
 .hero {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 100px 0 80px;
-  background: #080808;
 }
 
 .hero-eyebrow {
@@ -61,8 +57,6 @@ body {
   letter-spacing: 0.06em;
   color: var(--accent);
   margin-bottom: 32px;
-  opacity: 0;
-  animation: fade-up 0.8s 0.1s ease forwards;
 }
 
 .hero h1 {
@@ -72,76 +66,56 @@ body {
   line-height: 1.0;
   letter-spacing: -0.03em;
   margin-bottom: 28px;
-  opacity: 0;
-  animation: fade-up 0.9s 0.2s ease forwards;
 }
 
 .hero-sub {
   font-size: 1rem;
   color: var(--muted);
-  font-weight: 300;
   max-width: 380px;
   line-height: 1.65;
   margin-bottom: 48px;
-  opacity: 0;
-  animation: fade-up 0.9s 0.35s ease forwards;
 }
 
 .hero-cta {
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
-  opacity: 0;
-  animation: fade-up 0.9s 0.5s ease forwards;
 }
 
-/* ─── BUTTONS ─── */
+/* BUTTONS */
 .btn {
   display: inline-flex;
   align-items: center;
   padding: 12px 24px;
   border-radius: 6px;
-  font-family: 'Inter', sans-serif;
   font-size: 0.875rem;
-  font-weight: 400;
   text-decoration: none;
-  letter-spacing: 0.01em;
   transition: all 0.2s ease;
-  cursor: pointer;
-  border: none;
 }
 
 .btn-primary {
   background: var(--text);
   color: #080808;
 }
+
 .btn-primary:hover {
-  background: #fff;
   transform: translateY(-2px);
 }
 
 .btn-ghost {
-  background: transparent;
-  color: var(--muted);
   border: 1px solid var(--border);
+  color: var(--muted);
 }
+
 .btn-ghost:hover {
   border-color: var(--border-hover);
   color: var(--text);
   transform: translateY(-2px);
 }
 
-/* ─── RULE ─── */
-.rule {
-  width: 100%;
-  height: 1px;
-  background: var(--border);
-}
-
-/* ─── SECTION ─── */
+/* SECTION */
 .section {
   padding: 100px 0;
-  background: #080808;
 }
 
 .section-label {
@@ -152,157 +126,82 @@ body {
   margin-bottom: 48px;
 }
 
-/* ─── GRID ─── */
+/* GRID */
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
 
-/* ─── CARD ─── */
+/* CARD */
 .card {
   background: #080808;
   padding: 32px 28px 28px;
-  text-decoration: none;
-  color: inherit;
+  border-radius: 12px;
+  border: 1px solid var(--border);
   display: flex;
   flex-direction: column;
-  position: relative;
-  border-radius: 12px;
   min-height: 300px;
-  transition: background 0.25s ease;
-  isolation: isolate;
-}
-
-/* metallic gradient border */
-.card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: 12px;
-  padding: 1px;
-  background: linear-gradient(
-    145deg,
-    rgba(255,255,255,0.22) 0%,
-    rgba(255,255,255,0.05) 35%,
-    rgba(255,255,255,0.10) 65%,
-    rgba(255,255,255,0.20) 100%
-  );
-  -webkit-mask:
-    linear-gradient(#fff 0 0) content-box,
-    linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
-  z-index: 0;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.25s ease;
 }
 
 .card.clickable:hover {
   background: #0d0d0d;
+  border-color: var(--border-hover);
 }
 
-.card.clickable:hover .card-arrow {
-  opacity: 1;
-  transform: translate(3px, -3px);
-}
-
-/* ─── LOGO ─── */
 .card-logo {
   width: 72px;
   height: 72px;
   margin-bottom: 28px;
   object-fit: contain;
-  position: relative;
-  z-index: 1;
 }
 
-/* ─── CARD TEXT ─── */
 .card-title {
   font-family: 'Syne', sans-serif;
   font-size: 1.15rem;
-  font-weight: 600;
-  letter-spacing: -0.02em;
   margin-bottom: 10px;
-  line-height: 1.15;
-  position: relative;
-  z-index: 1;
 }
 
 .card-desc {
   font-size: 0.875rem;
   color: var(--muted);
-  line-height: 1.65;
   flex: 1;
-  position: relative;
-  z-index: 1;
 }
 
 .card-footer {
   margin-top: 28px;
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  position: relative;
-  z-index: 1;
 }
 
 .badge-soon {
   font-size: 0.68rem;
   letter-spacing: 0.12em;
-  text-transform: uppercase;
   padding: 5px 10px;
-  border-radius: 4px;
   border: 1px solid rgba(201,185,154,0.3);
   color: var(--accent);
   background: var(--accent-dim);
 }
 
 .card-arrow {
-  font-size: 1rem;
   color: var(--muted);
-  opacity: 0.45;
-  transition: all 0.2s ease;
-  display: inline-block;
-  margin-left: auto;
 }
 
-/* ─── STATUS BAR ─── */
+/* STATUS */
 .status-bar {
   padding: 24px 0;
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
-  background: #080808;
-}
-
-.status-bar p {
-  font-size: 0.8rem;
-  color: var(--muted);
-  letter-spacing: 0.04em;
   text-align: center;
 }
 
-.status-bar strong {
-  color: var(--text);
-  font-weight: 400;
-}
-
-.dot {
-  display: inline-block;
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: var(--accent);
-  margin: 0 12px;
-  vertical-align: middle;
-  position: relative;
-  top: -1px;
-}
-
-/* ─── CONTACT ─── */
+/* CONTACT */
 .contact {
   padding: 120px 0 100px;
   text-align: center;
-  background: #080808;
 }
 
 .contact-label {
@@ -311,79 +210,39 @@ body {
   text-transform: uppercase;
   color: var(--accent);
   margin-bottom: 36px;
-  display: block;
 }
 
 .contact-email {
   font-family: 'Syne', sans-serif;
   font-size: clamp(1.6rem, 3.5vw, 2.8rem);
-  font-weight: 600;
-  letter-spacing: -0.03em;
   text-decoration: none;
   color: var(--text);
-  position: relative;
-  display: inline-block;
-  transition: color 0.2s ease;
 }
 
-.contact-email::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: var(--accent);
-  transform: scaleX(0.25);
-  transform-origin: left;
-  transition: transform 0.4s ease;
-  opacity: 0.5;
-}
-
-.contact-email:hover { color: var(--accent); }
-.contact-email:hover::after { transform: scaleX(1); opacity: 1; }
-
-/* ─── FOOTER ─── */
+/* FOOTER */
 .footer {
   padding: 36px 0;
   border-top: 1px solid var(--border);
-  background: #080808;
+  text-align: center;
+  color: var(--muted);
 }
 
-.footer-inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.footer-name { font-size: 0.8rem; color: var(--muted); }
-.footer-copy { font-size: 0.8rem; color: rgba(240,237,232,0.18); }
-
-/* ─── ANIMATION ─── */
-@keyframes fade-up {
-  from { opacity: 0; transform: translateY(18px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-/* ─── MOBILE ─── */
+/* MOBILE */
 @media (max-width: 780px) {
   .wrap { padding: 0 20px; }
-  .grid { grid-template-columns: 1fr; gap: 16px; }
-  .card { min-height: auto; }
-  .hero { padding: 80px 0 60px; }
-  .section { padding: 80px 0; }
-  .footer-inner { flex-direction: column; gap: 8px; text-align: center; }
+  .grid { grid-template-columns: 1fr; }
 }
 </style>
 </head>
+
 <body>
 
-<!-- HERO -->
-<section class="hero" id="top">
+<section class="hero">
   <div class="wrap">
     <p class="hero-eyebrow">Verum Lux Labs</p>
-    <h1>Products for music,<br>culture &amp; discovery.</h1>
+    <h1>Products for music,<br>culture & discovery.</h1>
     <p class="hero-sub">An independent lab building digital products for music, culture, and discovery.</p>
+
     <div class="hero-cta">
       <a href="#products" class="btn btn-primary">Explore projects</a>
       <a href="#contact" class="btn btn-ghost">Get in touch</a>
@@ -391,17 +250,14 @@ body {
   </div>
 </section>
 
-<div class="rule"></div>
-
-<!-- PROJECTS -->
 <section class="section" id="products">
   <div class="wrap">
     <p class="section-label">Current projects</p>
+
     <div class="grid">
 
-      <!-- TuneWalk -->
       <div class="card">
-        <img src="tunewalk.png" class="card-logo" alt="TuneWalk">
+        <img src="tunewalk.png" class="card-logo">
         <h3 class="card-title">TuneWalk</h3>
         <p class="card-desc">Explore cities through curated music heritage tours. Launching with London.</p>
         <div class="card-footer">
@@ -409,21 +265,19 @@ body {
         </div>
       </div>
 
-      <!-- BeatsPortal -->
-      <a class="card clickable" href="https://beatsportal.com" target="_blank" rel="noopener">
-        <img src="beatsportal.png" class="card-logo" alt="BeatsPortal">
+      <a class="card clickable" href="https://beatsportal.com" target="_blank">
+        <img src="beatsportal.png" class="card-logo">
         <h3 class="card-title">BeatsPortal</h3>
-        <p class="card-desc">Playlist submission platform for electronic music, built for producers and curators.</p>
+        <p class="card-desc">Playlist submission platform for electronic music.</p>
         <div class="card-footer">
           <span class="card-arrow">↗</span>
         </div>
       </a>
 
-      <!-- Modulator Records -->
-      <a class="card clickable" href="https://modulatorrecords.com" target="_blank" rel="noopener">
-        <img src="modulator.png" class="card-logo" alt="Modulator Records">
+      <a class="card clickable" href="https://modulatorrecords.com" target="_blank">
+        <img src="modulator.png" class="card-logo">
         <h3 class="card-title">Modulator Records</h3>
-        <p class="card-desc">Independent label focused on distinctive artists and releases.</p>
+        <p class="card-desc">Independent label focused on artists and releases.</p>
         <div class="card-footer">
           <span class="card-arrow">↗</span>
         </div>
@@ -433,35 +287,21 @@ body {
   </div>
 </section>
 
-<!-- STATUS -->
 <div class="status-bar">
-  <div class="wrap">
-    <p>
-      <strong>London-based</strong>
-      <span class="dot"></span>
-      <strong>Independent product lab</strong>
-      <span class="dot"></span>
-      <strong>Actively building</strong>
-    </p>
-  </div>
+  London-based • Independent product lab • Actively building
 </div>
 
-<!-- CONTACT -->
 <section class="contact" id="contact">
   <div class="wrap">
-    <span class="contact-label">Get in touch</span>
-    <a class="contact-email" href="mailto:hello@verumluxlabs.com">hello@verumluxlabs.com</a>
+    <div class="contact-label">Get in touch</div>
+    <a class="contact-email" href="mailto:hello@verumluxlabs.com">
+      hello@verumluxlabs.com
+    </a>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer class="footer">
-  <div class="wrap">
-    <div class="footer-inner">
-      <span class="footer-name">Verum Lux Labs</span>
-      <span class="footer-copy">© 2026. All rights reserved.</span>
-    </div>
-  </div>
+  © 2026 Verum Lux Labs
 </footer>
 
 </body>
